@@ -48,5 +48,5 @@ Output:
 
 Use verify [file] to test your solution and see how it does. When you are finished editing your code, use submit [file] to submit your answer. If your solution passes the test cases, it will be removed from your home folder.
 
-![Googe-foobar-gif](https://imgur.com/a/MeatzBI)
-[![Test](https://imgur.com/a/MeatzBI)](https://imgur.com/a/MeatzBI)
+
+[![Test](https://imgur.com/ZOFHnD8)](https://imgur.com/a/MeatzBI)
