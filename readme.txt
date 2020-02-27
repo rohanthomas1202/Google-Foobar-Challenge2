@@ -48,5 +48,4 @@ Output:
 
 Use verify [file] to test your solution and see how it does. When you are finished editing your code, use submit [file] to submit your answer. If your solution passes the test cases, it will be removed from your home folder.
 
-![](https://imgur.com/a/MeatzBI)
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/MeatzBI"  ><a href="//imgur.com/a/MeatzBI">Google Foobar challenge #2</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+![Googe-foobar-gif(https://imgur.com/a/MeatzBI.gif)
