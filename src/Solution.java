@@ -1,45 +1,33 @@
 import java.util.*;
 
 
+
+
 public class Solution {
     public static void main(String[] args) {
 
-        List<Integer> index_list = new LinkedList<>();
-
-        index_list.add(1);
-        index_list.add(4);
-        index_list.add(7);
+        // check whether function solution works
+        int[] flux_values = solution(3, new int[]{79, 33, 52, 1});
 
 
-        /*
-
-
-        3, {7, 3, 5, 1}
-
-
-        {19, 14, 28})
-        Output:
-        21,15,29
-
-                */
-        List<Integer> flux_values = solution(3, index_list);
-
-
-        //System.out.println(val.length);
-
-        for (int i = 0; i < flux_values.size(); i++) {
-            System.out.print(flux_values.get(i));
-            if (i != flux_values.size() - 1)
+        for (int i = 0; i < flux_values.length; i++) {
+            System.out.print(flux_values[i]);
+            if (i != flux_values.length - 1)
                 System.out.print(" ");
         }
 
     }
 
 
-    public static List<Integer> solution(int h, List<Integer> q) {
-        int list_size = q.size();
 
-        List<Integer> flux_converter_label = new LinkedList<>();
+
+
+    /*function which takes in an integer(height) and a set of
+    * */
+    public static int[] solution(int h, int[] q) {
+        int list_size = q.length;
+
+        int[] flux_converter_label = new int[list_size];
 
 
         Node node = new Node(0);
@@ -53,9 +41,13 @@ public class Solution {
         //flux_chain_design_tree.post_order_indexing(flux_chain_design_tree.root);
 
 
-        for (Integer integer : q) {
-            flux_converter_label.add(flux_chain_design_tree.find_parent(integer));
+        for (int i = 0; i < q.length; i++){
+            flux_converter_label[i] = flux_chain_design_tree.find_parent(q[i]);
         }
+
+/*        for (Integer integer : q) {
+            flux_converter_label[integer] = flux_chain_design_tree.find_parent(integer);
+        }*/
 
 
         return flux_converter_label;
