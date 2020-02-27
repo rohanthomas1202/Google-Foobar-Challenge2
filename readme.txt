@@ -48,4 +48,4 @@ Output:
 
 Use verify [file] to test your solution and see how it does. When you are finished editing your code, use submit [file] to submit your answer. If your solution passes the test cases, it will be removed from your home folder.
 
-[![Watch the video](https://imgur.com/a/MeatzBI)
+[![Watch the video](https://imgur.com/a/MeatzBI)]
