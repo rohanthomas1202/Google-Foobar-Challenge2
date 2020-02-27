@@ -1,7 +1,5 @@
-import java.util.*;
-
-
-
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Solution {
     public static void main(String[] args) {
@@ -10,6 +8,7 @@ public class Solution {
         int[] flux_values = solution(3, new int[]{79, 33, 52, 1});
 
 
+        // printing correct
         for (int i = 0; i < flux_values.length; i++) {
             System.out.print(flux_values[i]);
             if (i != flux_values.length - 1)
@@ -19,11 +18,8 @@ public class Solution {
     }
 
 
-
-
-
     /*function which takes in an integer(height) and a set of
-    * */
+     * */
     public static int[] solution(int h, int[] q) {
         int list_size = q.length;
 
@@ -41,15 +37,10 @@ public class Solution {
         //flux_chain_design_tree.post_order_indexing(flux_chain_design_tree.root);
 
 
-        for (int i = 0; i < q.length; i++){
+        for (int i = 0; i < q.length; i++) {
             flux_converter_label[i] = flux_chain_design_tree.find_parent(q[i]);
         }
-
-/*        for (Integer integer : q) {
-            flux_converter_label[integer] = flux_chain_design_tree.find_parent(integer);
-        }*/
-
-
+        // returning flux converter's label
         return flux_converter_label;
     }
 
@@ -67,26 +58,32 @@ public class Solution {
             this.height = height;
         }
 
-        public void createTree() {                  // method to create a tree with random values with a given height
-
-            Node curr_node = root;                  // curr_node will add left and right nodes until desired height is reached
+        // method to create a tree with random values with a given height
+        public void createTree() {
+            // curr_node will add left and right nodes until desired height is reached
+            Node curr_node = root;
+            Node curr_left, curr_right;
+            // queue to keep track of the nodes to insert children
             Queue<Node> flux_queue = new LinkedList<>();
+            // adding the root node to the queue to add children
             flux_queue.add(curr_node);
 
-            Node curr_left, curr_right;
-
-
+            // adding (2^(h) - 1) nodes, where h is the height of the complete binary tree
             for (int i = 1, j = 1; i < (Math.pow(2, height) - 1); i += 2, j++) {
+                // dequeueing first element element to add children
                 curr_node = flux_queue.remove();
+
+                // creating left child and adding it to the queue
                 curr_node.left = new Node(j);
                 flux_queue.add(curr_node.left);
+
+                // creating right child and adding it to the queue
                 curr_node.right = new Node(-j);
                 flux_queue.add(curr_node.right);
 
+                // linking each node to its parent, to retrieve value later
                 curr_left = curr_node.left;
                 curr_right = curr_node.right;
-
-
                 curr_left.parent = curr_node;
                 curr_right.parent = curr_node;
 
@@ -119,75 +116,7 @@ public class Solution {
             flux_val++;
         }
 
-
-        // global variable to keep track of the index of each node
-        int index = 0;
-
-        /*
-        Function to index flux chains in the desired order (Parent --> Left_Child --> Right_Child)
-
-         */
-/*
-        public void pre_order_indexing(Node node) {
-            if (node == null)
-                return;
-
-            // update index values
-            node.index = index;
-            index++;
-
-            // go down left subtree recursively
-            pre_order_indexing(node.left);
-
-
-            // go down right subtree recursively
-            pre_order_indexing(node.right);
-        }
-
-*/
-/*
-
-        public void post_order_indexing(Node node) {
-            if (node == null)
-                return;
-
-
-            // go down left subtree recursively
-            post_order_indexing(node.left);
-
-
-            // go down right subtree recursively
-            post_order_indexing(node.right);
-            // update index values
-            node.index = index;
-            index++;
-
-        }
-*/
-/*
-
-       public void in_order_indexing(Node node) {
-            if (node == null)
-                return;
-
-
-
-            // go down left subtree recursively
-           in_order_indexing(node.left);
-
-           // update index values
-           node.index = index;
-           index++;
-
-            // go down right subtree recursively
-           in_order_indexing(node.right);
-
-
-        }
-
-*/
-
-        // find the flux_value given the index of node
+        // find the flux_value of parent, given flux value of its child
         public int find_parent(int check_val) {
             Node curr_node = root;
             Queue<Node> queue = new LinkedList<>();
@@ -199,23 +128,15 @@ public class Solution {
                 if (check_val == curr_node.flux_converter_ID) {
                     if (curr_node != root) {
                         return (curr_node.parent.flux_converter_ID);
-                    }
-                    else{
+                    } else {
                         return -1;
                     }
                 }
-
-               /* if (curr_node.index == index) {
-                    return curr_node.flux_converter_ID;
-                }*/
                 queue.add(curr_node.left);
                 queue.add(curr_node.right);
             }
             return -1;
-
         }
-
-
     }
 
     public static class Node {
